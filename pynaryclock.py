@@ -10,7 +10,7 @@ def main():
         while last_sec == secs:
             secs = time.localtime()
 
-        # Converts each time element to its own binary char array
+        # Converts hours, minutes, and seconds to their own binary lists
         year, month, day, hour, minute, second, weekday, yearday, daylight = secs
                 
         seconds_string = "{0:#b}".format(second)
@@ -74,7 +74,7 @@ def main():
             else:
                 x = x - 1
 
-        # Draws the populated clock array
+        # Draws the populated clock list
         os.system('cls')
         for i in range (0,4):
             for j in range (0,8):
