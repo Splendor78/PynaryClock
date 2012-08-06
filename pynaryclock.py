@@ -31,41 +31,23 @@ def main():
         # Adds the current hours to the clock list
         x, y = 3, 1
         for num in hours_list:
-            if num == '1':
-                clock_list[x][y] = '[|]'
-            else:
-                clock_list[x][y] = '[ ]'
-            if x == 0:
-                y = y - 1
-                x = 3
-            else:
-                x = x - 1
+            clock_list[x][y] = '[|]' if num == '1' else '[ ]'
+            y = y - 1 if x == 0 else y
+            x = 3 if x == 0 else x - 1
 
         # Adds the current minutes to the clock list
         x, y = 3, 4
         for num in minutes_list:
-            if num == '1':
-                clock_list[x][y] = '[|]'
-            else:
-                clock_list[x][y] = '[ ]'
-            if x == 0:
-                y = y - 1
-                x = 3
-            else:
-                x = x - 1
+            clock_list[x][y] = '[|]' if num == '1' else '[ ]'
+            y = y - 1 if x == 0 else y
+            x = 3 if x == 0 else x - 1
 
         # Adds the current seconds to the clock list
         x, y = 3, 7
         for num in seconds_list:
-            if num == '1':
-                clock_list[x][y] = '[|]'
-            else:
-                clock_list[x][y] = '[ ]'
-            if x == 0:
-                y = y - 1
-                x = 3
-            else:
-                x = x - 1
+            clock_list[x][y] = '[|]' if num == '1' else '[ ]'
+            y = y - 1 if x == 0 else y
+            x = 3 if x == 0 else x - 1
 
         # Draws the populated clock list
         os.system('cls') # Only works in Windows
