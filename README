@@ -1,7 +1,5 @@
 ===PynaryClock===
 
-A simple clock that continuously updates and displays the time on the 
-command line/terminal in both binary and digital read-out.
+A simple clock written in Python that continuously updates and displays the time on the command line/terminal in both binary and digital read-out.
 
-To run the clock simply run the pynaryclock.py file in your preferred console/
-terminal.
+To run the clock simply run the pynaryclock.py file in your Windows console.
