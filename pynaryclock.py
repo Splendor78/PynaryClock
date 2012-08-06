@@ -1,16 +1,12 @@
 import time
 import os
 from array import *
+from time import strftime, sleep
 
 def main():
     while (1 > 0):
-        # Limits re-draw to every new second
-        last_sec = time.localtime()
-        secs = last_sec
-        while last_sec == secs:
-            secs = time.localtime()
-
         # Converts hours, minutes, and seconds to their own binary lists
+        secs = time.localtime()
         year, month, day, hour, minute, second, weekday, yearday, daylight = secs
                 
         seconds_string = "{0:#b}".format(second)
@@ -33,8 +29,7 @@ def main():
                  ["[ ]","[ ]"," ","[ ]","[ ]"," ","[ ]","[ ]"]]
 
         # Adds the current hours to the clock list
-        x = 3
-        y = 1
+        x, y = 3, 1
         for num in hours_list:
             if num == '1':
                 clock_list[x][y] = '[|]'
@@ -47,8 +42,7 @@ def main():
                 x = x - 1
 
         # Adds the current minutes to the clock list
-        x = 3
-        y = 4
+        x, y = 3, 4
         for num in minutes_list:
             if num == '1':
                 clock_list[x][y] = '[|]'
@@ -61,8 +55,7 @@ def main():
                 x = x - 1
 
         # Adds the current seconds to the clock list
-        x = 3
-        y = 7
+        x, y = 3, 7
         for num in seconds_list:
             if num == '1':
                 clock_list[x][y] = '[|]'
@@ -75,37 +68,17 @@ def main():
                 x = x - 1
 
         # Draws the populated clock list
-        os.system('cls')
-        for i in range (0,4):
-            for j in range (0,8):
-                print clock_list[i][j],
-            print '\n'
+        os.system('cls') # Only works in Windows
+        for row in clock_list:
+            print "".join(row)
 
         # Adds a human-readable digital clock below the binary clock
-        if hour < 10:
-            hour1 = '0'
-            hour2 = str(hour)
-        else:
-            hour1 = str(hour)[:1]
-            hour2 = str(hour)[-1:]
-            
-        if minute < 10:
-            minute1 = '0'
-            minute2 = str(minute)
-        else:
-            minute1 = str(minute)[:1]
-            minute2 = str(minute)[-1:]
-            
-        if second < 10:
-            second1 = '0'
-            second2 = str(second)
-        else:
-            second1 = str(second)[:1]
-            second2 = str(second)[-1:]
+        digital = time.strftime("%H%M%S")
+        print '\n ' + digital[0] + '  ' + digital[1] + ' : ' + digital[2] + \
+        '  ' + digital[3] + ' : ' + digital[4] + '  ' + digital[5]
         
-        print '\n ' + hour1 + '   ' + hour2 + '  :  ' + \
-        minute1 + '   ' + minute2 + '  :  ' + \
-        second1 + '   ' + second2        
-            
+        # Limits re-draw to every new second
+        sleep(1)
+        
 if __name__ == '__main__':
   main()
