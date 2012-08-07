@@ -4,22 +4,12 @@ from array import *
 from time import strftime, sleep
 
 def main():
-    while (1 > 0):
+    while True:
         # Converts hours, minutes, and seconds to their own binary lists
-        secs = time.localtime()
-        year, month, day, hour, minute, second, weekday, yearday, daylight = secs
-                
-        seconds_string = "{0:#b}".format(second)
-        seconds_string = seconds_string[2:]
-        seconds_list = list(seconds_string[::-1])
-        
-        minutes_string = "{0:#b}".format(minute)
-        minutes_string = minutes_string[2:]
-        minutes_list = list(minutes_string[::-1])
-        
-        hours_string = "{0:#b}".format(hour)
-        hours_string = hours_string[2:]
-        hours_list = list(hours_string[::-1])
+        year, month, day, hour, minute, second, weekday, yearday, daylight = time.localtime()
+        seconds_list = list(bin(second)[:1:-1])
+        minutes_list = list(bin(minute)[:1:-1])
+        hours_list = list(bin(hour)[:1:-1])
         
         # Blank clock list
         clock_list = [
@@ -56,8 +46,8 @@ def main():
 
         # Adds a human-readable digital clock below the binary clock
         digital = time.strftime("%H%M%S")
-        print '\n ' + digital[0] + '  ' + digital[1] + ' : ' + digital[2] + \
-        '  ' + digital[3] + ' : ' + digital[4] + '  ' + digital[5]
+        print '\n {0}  {1} : {2}  {3} : {4}  {5}'.format(
+            digital[0],digital[1],digital[2],digital[3],digital[4],digital[5])
         
         # Limits re-draw to every new second
         sleep(1)
